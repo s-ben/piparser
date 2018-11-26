@@ -24,20 +24,18 @@ Install requrired python modules:
 
 ```git pull```
 
-3. Edit `vote_analysis.py` file to specify the proposal number, proposal title, and path to repo (these are hardcoded for now...). E.g.,
+3. Edit `vote_analysis.py` file to specify path to repo (hardcoded for now...). E.g.,
 
 ```
-proposal_num = 'fa38a3593d9a3f6cb2478a24c25114f5097c572f6dadf24c78bb521ed10992a4'
-proposal_title = 'Decred Contractor Clearance Process'
 repo_path = '/<user>/<path>/mainnet/
 ```
-4. run script.
+4. Run script and pass desired proposal number as an argument.
 
-```python vote_analysis.py```
+```python vote_analysis.py 27f87171d98b7923a1bd2bee6affed929fa2d2a6e178b5c80a9971a92a5c7f50```
 
 Check the root directory for csv files containing vote data. The file ending in `...votes.csv` contains raw vote data (one vote per row) for the specified proposal. The file ending in `...votes_stats.csv` contains commit-level (i.e. hourly) vote data, and some basic stats. 
 
 ```
-Decred Contractor Clearance Process_votes.csv
-Decred Contractor Clearance Process_votes_stats.csv
+27f87171d98b7923a1bd2bee6affed929fa2d2a6e178b5c80a9971a92a5c7f50_votes.csv
+27f87171d98b7923a1bd2bee6affed929fa2d2a6e178b5c80a9971a92a5c7f50_votes_stats.csv
 ```
