@@ -8,11 +8,11 @@ import os
 # ----------------- Specify Proposal, Git path  -------------------
 
 # Proposal we want to analyze
-# proposal_num = '27f87171d98b7923a1bd2bee6affed929fa2d2a6e178b5c80a9971a92a5c7f50'
-# proposal_title = 'Ditto Communications Proposal for Decred'
+proposal_num = '27f87171d98b7923a1bd2bee6affed929fa2d2a6e178b5c80a9971a92a5c7f50'
+proposal_title = 'Ditto Communications Proposal for Decred'
 
-proposal_num = 'fa38a3593d9a3f6cb2478a24c25114f5097c572f6dadf24c78bb521ed10992a4'
-proposal_title = 'Decred Contractor Clearance Process'
+# proposal_num = 'fa38a3593d9a3f6cb2478a24c25114f5097c572f6dadf24c78bb521ed10992a4'
+# proposal_title = 'Decred Contractor Clearance Process'
 
 
 # Path to repo with Pi data
@@ -110,11 +110,11 @@ for i in range(len(commits)-1,-1,-1):
 
 # save raw vote data to csv
 df = pd.DataFrame(votes)  
-df.to_csv(proposal_title+'_votes.csv', sep=',',index=False,header=True)
+df.to_csv(proposal_title+'_votes.csv', sep=',',index=False,header=True,columns=['commit_num','timestamp_human','timestamp_unix','ticket','votebit','vote'])
 
 # saave vote stats to csv
 df = pd.DataFrame(votes_stats)  
-df.to_csv(proposal_title+'_votes_stats.csv', sep=',',index=False,header=True)
+df.to_csv(proposal_title+'_votes_stats.csv', sep=',',index=False,header=True,columns=['commit_num','num_votes','num_yes_votes','perc_yes_votes'])
 
 
 
