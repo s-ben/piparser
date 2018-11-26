@@ -44,6 +44,8 @@ def iterparse(j):
 # create repo object ()
 repo = Repo(repo_path)	
 
+
+
 # get path to 'ballot.journal' file (vote file) for given proposal
 ballot_path = repo.git.ls_files(proposal_num+'/*/plugins/decred/ballot.journal')  
 
@@ -81,10 +83,10 @@ for i in range(len(commits)-1,-1,-1):
 		for item in iterparse(votes_raw[j]):
 
 			if 'castvote' in item.keys(): 		# if a vote was cast
-				vote['timestamp_unix'] = commits[i].committed_date		# time (unix)
-				vote['timestamp_human'] = time.strftime("%a, %d %b %Y %H:%M", time.gmtime(commits[i].committed_date))	# time (human readable)
+				vote['timestamp'] = commits[i].committed_date		# time (unix)
+				# vote['timestamp_human'] = time.strftime("%a, %d %b %Y %H:%M", time.gmtime(commits[i].committed_date))	# time (human readable)
 				vote['commit_num'] = len(commits) - i				# commit number
-				vote['raw_data'] = votes_raw[j]		# raw txt vote
+				# vote['raw_data'] = votes_raw[j]		# raw txt vote
 				vote['ticket'] = item['castvote']['ticket']  	# ticket number
 				vote['votebit'] = item['castvote']['votebit']  	# votebit (Yes/No)
 
@@ -110,7 +112,7 @@ for i in range(len(commits)-1,-1,-1):
 
 # save raw vote data to csv
 df = pd.DataFrame(votes)  
-df.to_csv(proposal_title+'_votes.csv', sep=',',index=False,header=True,columns=['commit_num','timestamp_human','timestamp_unix','ticket','votebit','vote'])
+df.to_csv(proposal_title+'_votes.csv', sep=',',index=False,header=True,columns=['commit_num','timestamp','ticket','vote'])
 
 # saave vote stats to csv
 df = pd.DataFrame(votes_stats)  
