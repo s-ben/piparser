@@ -19,6 +19,9 @@ proposal_title = 'Title of proposal (To fe filled in later)' # don't worry about
 
 def count_votes(repo, proposal_num, proposal_title):
 
+
+	# repo.git.checkout('master')		# checkout master branch to reset HEAD if needed
+
 	# get path to 'ballot.journal' file (vote file) for given proposal
 	ballot_path = repo.git.ls_files(proposal_num+'/*/plugins/decred/ballot.journal')  
 
@@ -134,6 +137,8 @@ for i in range(0,len(proposals)):
 	proposal_num = proposals[i] 
 	# print(proposal_num)
 
+	repo.git.checkout('master')		# checkout master branch to reset HEAD 
+
 	ballot_path = repo.git.ls_files(proposal_num+'/*/plugins/decred/ballot.journal')  
 
 	if ballot_path != '':	# if a ballot.journal file exists, count votes
@@ -153,7 +158,7 @@ for i in range(0,len(proposals)):
 		df.to_csv(proposal_num+'_votes_stats.csv', sep=',',index=False,header=True,columns=['commit_num','num_votes','num_yes_votes','perc_yes_votes'])
 
 
-
+repo.git.checkout('master')		# checkout master branch to reset HEAD if needed
 
 
 
