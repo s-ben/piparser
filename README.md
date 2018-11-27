@@ -33,6 +33,8 @@ repo_path = '/<user>/<path>/mainnet/
 
 ```python vote_analysis.py 27f87171d98b7923a1bd2bee6affed929fa2d2a6e178b5c80a9971a92a5c7f50```
 
+If a proposal is not specified, csv files will be generated for all proposals.
+
 Check the root directory for csv files containing vote data. The file ending in `...votes.csv` contains raw vote data (one vote per row) for the specified proposal. The file ending in `...votes_stats.csv` contains commit-level (i.e. hourly) vote data, and some basic stats. 
 
 ```
